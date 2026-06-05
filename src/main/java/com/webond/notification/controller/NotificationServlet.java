@@ -164,11 +164,12 @@ public class NotificationServlet extends HttpServlet {
 
 				Integer report_id = null;
 				String reportIdParam = req.getParameter("reportId");
-				if (reportIdParam != null && reportIdParam.trim().length() > 0) {
+				// 加上 !reportIdParam.equalsIgnoreCase("null") 的防呆
+				if (reportIdParam != null && reportIdParam.trim().length() > 0 && !reportIdParam.equalsIgnoreCase("null")) {
 				    try {
 				        int tempId = Integer.parseInt(reportIdParam.trim());
 				        if (tempId > 0) {
-				            report_id = tempId; // 只有大於 0 的合法 ID 才採用
+				            report_id = tempId; 
 				        }
 				    } catch (NumberFormatException e) {
 				        errorMsgs.add("檢舉編號格式不正確");
@@ -184,12 +185,11 @@ public class NotificationServlet extends HttpServlet {
 				}
 				
 				java.sql.Date created_at = null;
-				try {
+				
 					created_at = java.sql.Date.valueOf(req.getParameter("createdAt").trim());
-				} catch (IllegalArgumentException e) {
-					created_at =new java.sql.Date(System.currentTimeMillis());
-					errorMsgs.add("請輸入日期!");
-				}
+				
+
+//				java.sql.Date created_at = java.sql.Date.valueOf(req.getParameter("createdAt").trim());
 
 
 				NotificationVO notificationVO = new NotificationVO();

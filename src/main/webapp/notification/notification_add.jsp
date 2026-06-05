@@ -79,11 +79,11 @@
 	</tr>
 	<tr>
 		<td>標題：<font color=red><b>*</b></td>
-		<td><input type="TEXT" name="title"   value="<%= (notificationVO==null)? "系統通知" : notificationVO.getTitle()%>" size="45"/></td>
+		<td><input type="TEXT" name="title"   value="<%= (notificationVO==null)? "" : notificationVO.getTitle()%>" size="45"/></td>
 	</tr>
 	<tr>
 		<td>內容：<font color=red><b>*</b></td>
-		<td><input type="TEXT" name="content"   value="<%= (notificationVO==null)? "系統通知" : notificationVO.getContent()%>" size="45"/></td>
+		<td><input type="TEXT" name="content"   value="<%= (notificationVO==null)? "" : notificationVO.getContent()%>" size="45"/></td>
 	</tr>
 	<tr>
     <td>通知類型：<font color=red><b>*</b></font></td>
@@ -169,7 +169,7 @@
            //disabledDates:        ['2017/06/08','2017/06/09','2017/06/10'], // 去除特定不含
            //startDate:	            '2017/07/10',  // 起始日
            minDate:               '-1970-01-01', // 去除今日(不含)之前
-           //maxDate:               '+1970-01-01'  // 去除今日(不含)之後
+           maxDate:               '+1970-01-01'  // 去除今日(不含)之後
         });
         
         

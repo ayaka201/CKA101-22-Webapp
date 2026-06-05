@@ -107,23 +107,24 @@
     </td>
 </tr>
 	
+	<tr>
 		<td>檢舉編號：</td>
 		<td><input type="TEXT" name="reportId"   value="<%=notificationVO.getReportId()%>" size="45"/></td>
 	</tr>
 	<tr>
 		<td>員工編號：<font color=red><b>*</b></font></td>
 		<td>
-			<select size="1" name="employeeId">
-         		<c:forEach var="notificationVO" items="${notificationSvc.all}" > 
-          			<option value="${notificationVO.employeeId}">${notificationVO.employeeId}
-         		</c:forEach>   
-       		</select>
+		<input type="TEXT" name="employeeId"   value="<%=notificationVO.getEmployeeId()%>" size="45"/>
+			
 			
 		</td>
 	</tr>
 	<tr>
 		<td>更新日期:</td>
-		<td><%=notificationVO.getCreatedAt()%></td>
+		<td><%=notificationVO.getCreatedAt()%>
+			<input type="hidden" name="createdAt" value="<%=notificationVO.getCreatedAt()%>">
+		</td>
+		
 	</tr>
 	
 
